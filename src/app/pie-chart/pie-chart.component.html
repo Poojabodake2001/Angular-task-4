@@ -1,28 +1,31 @@
-<div class="container py-5">
+<div class="container">
     <div class="row">
-        <div class="col-6">
-            <h2>Chart Form</h2>
-            <form [formGroup]="chartForm" (ngSubmit)="CreateChart(val1.value)">
-                <div class="form-group">
-                    <label for="val1">First Value</label>
-                    <input type="text" class="form-control w-50" [value]="giv1" #val1 id="val1" formControlName="value1" (focusout)="checkValue1(val1.value)">
-                    <span class="badge badge-warning" *ngIf="chartForm.get('value1').invalid && chartForm.get('value1').touched">please enter a number between 1 to 100</span>
-                </div>
-                <div class="form-group">
-                    <label for="val2">Second Value</label>
-                    <input type="text" class="form-control w-50" id="val2" formControlName="value2" [value]="giv2" #val2 (focusout)="checkValue2(val2.value)">
-                    <span class="badge badge-warning" *ngIf="chartForm.get('value2').invalid && chartForm.get('value2').touched">please enter a number between 1 to 100</span>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary">Create Chart</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-6">
-            <h2>Chart Formation</h2>
-            <div class="pieChart" Chartdr [chartValue]="passValue">
+        <form class="form-inline" [formGroup]="chartForm" (ngSubmit)="CreateChart(val1.value)">
+            <div class="form-group col-4">
+                <label for="val1">Box 1</label>
+                <input type="text" class="form-control w-60  ng-dirty ng-touched ng-valid" [value]="giv1" #val1 id="val1" formControlName="value1"
+                    (focusout)="checkValue1(val1.value)">
+                    <!-- <input type="text" id="val1" formcontrolname="value1" class="form-control w-50 ng-dirty ng-touched ng-valid"> -->
+                <span class="badge badge-warning"
+                    *ngIf="chartForm.get('value1').invalid && chartForm.get('value1').touched" else="">value between 1 to
+                    100</span>
+            </div>
+            <div class="form-group col-4">
+                <label for="val2">Box 2</label>
+                <input type="text" class="form-control w-60 ng-dirty ng-touched ng-valid" id="val2" formControlName="value2" [value]="giv2" #val2
+                    (focusout)="checkValue2(val2.value)">
+                <span class="badge badge-warning"
+                    *ngIf="chartForm.get('value2').invalid && chartForm.get('value2').touched" else="">invalid</span>
+            </div>
+            <div class="form-group col-4 mt-3">
+                <button class="btn btn-primary">Create Chart</button>
+            </div>
+        </form>
+        <div>
+            <div class="pieChart mt-3" Chartdr [chartValue]="passValue">
 
             </div>
+            
         </div>
     </div>
 </div>

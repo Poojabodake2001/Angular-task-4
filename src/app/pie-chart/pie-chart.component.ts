@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent  implements OnInit{
+export class PieChartComponent implements OnInit {
   passValue: any;
   chartForm: any;
   degree: any;
@@ -14,32 +15,31 @@ export class PieChartComponent  implements OnInit{
   giv2: any;
 
   ngOnInit(): void {
-    this.chartForm= new FormGroup({
-      value1 : new FormControl('', [Validators.required, Validators.min(1), Validators.max(100)]),
-      value2 : new FormControl('', [Validators.required, Validators.min(1), Validators.max(100)]),
+    this.chartForm = new FormGroup({
+      value1: new FormControl('', [Validators.required, Validators.min(1), Validators.max(100)]),
+      value2: new FormControl('', [Validators.required, Validators.min(1), Validators.max(100)]),
     })
   }
-  CreateChart(val : any){
-    this.degree= Math.round(val / 100 * 360)
+  CreateChart(val: any) {
+    this.degree = Math.round(val / 100 * 360)
     // console.log(this.degree)
-    this.passValue= `conic-gradient(
-      orange `+this.degree + `deg,
+    this.passValue = `conic-gradient(
+      orange `+ this.degree + `deg,
       red 0
       )`;
   }
-  checkValue1(fval : any){
+  checkValue1(fval: any) {
     let total = 100;
-    if(fval < 101){
-      this.giv2= 100- fval;
-      // console.log(this.giv2);
+    if (fval < 101) {
+      this.giv2 = 100 - fval;
     }
-  }
-  checkValue2(sval : any){
-    let total = 100;
-    if(sval < 101){
-      this.giv1= 100- sval;
-      // console.log(this.giv1);
-    }
+
   }
 
+  checkValue2(sval: any) {
+    let total = 100;
+    if (sval < 101) {
+      this.giv1 = 100 - sval;
+    }
+  }
 }
